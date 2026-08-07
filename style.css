@@ -12,6 +12,10 @@
 
 * { box-sizing: border-box; }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: 'Cairo', sans-serif;
@@ -19,6 +23,8 @@ body {
   background: var(--white);
   line-height: 1.8;
 }
+
+img { max-width: 100%; }
 
 .container {
   max-width: 1140px;
@@ -48,6 +54,8 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
+  flex-shrink: 1;
 }
 
 .brand-logo {
@@ -60,6 +68,15 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   line-height: 1.3;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.brand-text strong,
+.brand-text small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .brand-text strong {
@@ -503,6 +520,8 @@ a { text-decoration: none; color: inherit; }
   direction: ltr;
   margin-bottom: 6px;
   transition: color 0.15s;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .department-card a:last-child { margin-bottom: 0; }
@@ -524,6 +543,7 @@ a { text-decoration: none; color: inherit; }
   .products-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: repeat(2, 1fr); }
   .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .departments-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -544,6 +564,10 @@ a { text-decoration: none; color: inherit; }
   .main-nav ul.open { display: flex; }
   .main-nav ul li { padding: 10px; border-bottom: 1px solid #eee; }
   .main-nav ul li:last-child { border-bottom: none; }
-  .about-grid, .products-grid, .contact-grid, .partners-grid { grid-template-columns: 1fr; }
+  .about-grid, .products-grid, .contact-grid, .partners-grid, .departments-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: 2rem; }
+  .hero-logo { height: 140px; width: 140px; }
+  .brand-text small { display: none; }
+  .brand-text strong { font-size: 1rem; }
+  .brand-logo { height: 38px; width: 38px; }
 }
